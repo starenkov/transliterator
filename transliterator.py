@@ -62,75 +62,19 @@ class Trasnliterator:
         simple_text = ""
 
         for i in range(len(text)):
-
-            if (text[i] == 's' or text[i] == 'S') and i+2 <= len(text):
-                if Trasnliterator.alcyrilic.get(text[i] + text[i + 1] + text[i + 2]) is not None:
+            try:
+                if i+2 <= len(text) and (text[i] == 's' or text[i] == 'S') \
+                         and Trasnliterator.alcyrilic.get(text[i] + text[i + 1] + text[i + 2]) is not None:
                     simple_text += Trasnliterator.alcyrilic.get(text[i] + text[i + 1] + text[i + 2])
-                    i += 2
-                elif Trasnliterator.alcyrilic.get(text[i] + text[i + 1]) is not None and i+1 <= text(len):
+                    i = i + 2
+                elif i+1 <= len(text) and Trasnliterator.alcyrilic.get(text[i] + text[i + 1]) is not None:
                     simple_text += Trasnliterator.alcyrilic.get(text[i] + text[i + 1])
-            else:
-                simple_text += Trasnliterator.alcyrilic.get(text[i])
+                    i = i + 1
+                else:
+                    simple_text += Trasnliterator.alcyrilic.get(text[i])
+            except IndexError:
+                    simple_text += Trasnliterator.alcyrilic.get(text[i])
 
         return simple_text
-
-print(Trasnliterator.convertcyrilic('Suka'))
-
-# def convert_latin(text: str):
-#     simple_text = ""
-#
-#     for char in text:
-#         if char == 'ё':
-#             simple_text += chr(121) + chr(111)
-#         elif char == 'Ё':
-#             simple_text += chr(89) + chr(111)
-#         elif char == 'ж':
-#             simple_text += chr(122) + chr(104)
-#         elif char == 'Ж':
-#             simple_text += chr(90) + chr(104)
-#         elif char == 'ч':
-#             simple_text += chr(99) + chr(104)
-#         elif char == 'Ч':
-#             simple_text += chr(67) + chr(104)
-#         elif char == 'ш':
-#             simple_text += chr(115) + chr(104)
-#         elif char == 'Ш':
-#             simple_text += chr(83) + chr(104)
-#         elif char == 'щ':
-#             simple_text += chr(115) + chr(99) + chr(104)
-#         elif char == 'Щ':
-#             simple_text += chr(83) + chr(99) + chr(104)
-#         elif char == 'ю':
-#             simple_text += chr(121) + chr(117)
-#         elif char == 'Ю':
-#             simple_text += chr(89) + chr(117)
-#         elif char == 'я':
-#             simple_text += chr(121) + chr(97)
-#         elif char == 'Я':
-#             simple_text += chr(89) + chr(97)
-#         elif char == 'ә':
-#             simple_text += chr(97) + chr(96)
-#         elif char == 'Ә':
-#             simple_text += chr(65) + chr(96)
-#         elif char == 'ғ':
-#             simple_text += chr(103) + chr(96)
-#         elif char == 'Ғ':
-#             simple_text += chr(71) + chr(96)
-#         elif char == 'ң':
-#             simple_text += chr(100) + chr(96)
-#         elif char == 'Ң':
-#             simple_text += chr(78) + chr(96)
-#         elif char == 'ө' or char == 'ў':
-#             simple_text += chr(111) + chr(96)
-#         elif char == 'Ө' or char == 'Ў':
-#             simple_text += chr(79) + chr(96)
-#         elif char == 'ү':
-#             simple_text += chr(117) + chr(96)
-#         elif char == 'Ү':
-#             simple_text += chr(85) + chr(96)
-#         else:
-#             simple_text += chr(alphabet_cyrilic[char])
-#
-#     return simple_text
 
 
