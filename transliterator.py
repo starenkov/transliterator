@@ -61,20 +61,23 @@ class Trasnliterator:
 
         simple_text = ""
 
-        for i in range(len(text)):
+       #for i in range(len(text)):
+        i = 0
+        while i < len(text):
             try:
                 if i+2 <= len(text) and (text[i] == 's' or text[i] == 'S') \
                          and Trasnliterator.alcyrilic.get(text[i] + text[i + 1] + text[i + 2]) is not None:
                     simple_text += Trasnliterator.alcyrilic.get(text[i] + text[i + 1] + text[i + 2])
-                    i = i + 2
+                    i += 3
                 elif i+1 <= len(text) and Trasnliterator.alcyrilic.get(text[i] + text[i + 1]) is not None:
                     simple_text += Trasnliterator.alcyrilic.get(text[i] + text[i + 1])
-                    i = i + 1
+                    i += 2
                 else:
                     simple_text += Trasnliterator.alcyrilic.get(text[i])
+                    i += 1
             except IndexError:
-                    simple_text += Trasnliterator.alcyrilic.get(text[i])
+                simple_text += Trasnliterator.alcyrilic.get(text[i])
+                i += 1
 
         return simple_text
-
 
