@@ -68,14 +68,14 @@ def convertcyrilic(text: str):
                          and cyrilic_alphabet.get(text[i] + text[i + 1] + text[i + 2]) is not None:
                 simple_text += cyrilic_alphabet.get(text[i] + text[i + 1] + text[i + 2])
                 i += 3
-            elif i+1 <= len(text) and cyrilic_alphabet.alcyrilic.get(text[i] + text[i + 1]) is not None:
-                simple_text += cyrilic_alphabet.alcyrilic.get(text[i] + text[i + 1])
+            elif i+1 <= len(text) and cyrilic_alphabet.get(text[i] + text[i + 1]) is not None:
+                simple_text += cyrilic_alphabet.get(text[i] + text[i + 1])
                 i += 2
             else:
-                simple_text += cyrilic_alphabet.alcyrilic.get(text[i])
+                simple_text += cyrilic_alphabet.get(text[i])
                 i += 1
         except IndexError:
-            simple_text += cyrilic_alphabet.alcyrilic.get(text[i])
+            simple_text += cyrilic_alphabet.get(text[i])
             i += 1
 
     return simple_text
