@@ -1,2 +1,0 @@
-# transliterator
-My first task
