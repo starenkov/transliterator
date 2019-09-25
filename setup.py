@@ -1,9 +1,9 @@
 from distutils.core import setup
 
 setup(
-    name='Transliterator',
-    version='0.0.1',
-    packages=['Trasnliterator'],
+    name='stransliterator',
+    version='0.0.2',
+    packages=['trasnliterator'],
     url='https://github.com/starenkov/transliterator',
     license='MIT License',
     author='Tarenkov Vyacheslav',
