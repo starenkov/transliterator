@@ -17,7 +17,7 @@ cyrillic_alphabet = {
     'u`': 'ү',
 
     'A': 'А', 'B': 'Б', 'C': 'Ц', 'D': 'Д', 'E': 'Е',  # Big latin chars
-    'F': 'Ф', 'G': 'Ф', 'H': 'Х', 'I': 'И', 'J': 'Й',
+    'F': 'Ф', 'G': 'Г', 'H': 'Х', 'I': 'И', 'J': 'Й',
     'K': 'К', 'L': 'Л', 'M': 'М', 'N': 'Н', 'O': 'О',
     'P': 'П', 'Q': 'Қ', 'R': 'Р', 'S': 'C', 'T': 'Т',
     'U': 'У', 'V': 'В', 'Y': 'Ы', 'Z': 'З', 'Zh': 'Ж',
@@ -45,43 +45,33 @@ latin_alphabet = {
     'Ө': 'O`', 'Ү': 'U`', 'І': 'I', 'Ң': 'N`', 'Ә': 'A`', 'Һ': 'H'
 }
 
+cyrillic_multiple_alphabet = {
+    'zh': 'ж', 'yo': 'ё', 'ch': 'ч', 'sh': 'ш', 'sch': 'щ',
+    'yu': 'ю', 'ya': 'я', 'а`': 'ә', 'o`': 'ө', 'g`': 'ғ',
+    'n`': 'ң', 'u`': 'ү',
 
-def convert_latin(text: str):
-    # Method converts test to latin
-
-    simple_text = ""
-
-    for char in text:
-        simple_text += latin_alphabet.get(char)
-
-    return simple_text
+    'Zh': 'Ж', 'Yo': 'Ё', 'Ch': 'Ч', 'Sh': 'Ш', 'Sch': 'Щ',
+    'Ya': 'Я', 'Yu': 'Ю', 'A`': 'Ә', 'О`': 'Ө', 'G`': 'F',
+    'N`': 'Ң', 'U`': 'Ү'
+}
 
 
-def convert_cyrillic(text: str):
+def convert_to_latin(text: str):
+    # Method converts text to latin
+
+    for cyrillic_string, latin_string in latin_alphabet.items():
+        text = text.replace(cyrillic_string, latin_string)
+
+    return (text)
+
+
+def convert_to_cyrillic(text: str):
     # Method converts test to cyrillic
-    simple_text = ""
 
-    i = 0
-    while i < len(text):
-        # Cycle checks forward chars to combine into one char
-        try:
-            if i + 2 <= len(text) and (text[i] == 's' or text[i] == 'S') \
-                    and cyrillic_alphabet.get(text[i] + text[i + 1] + text[i + 2]) is not None:
-                simple_text += cyrillic_alphabet.get(text[i] + text[i + 1] + text[i + 2])
-                i += 3
-            elif i + 1 <= len(text) and cyrillic_alphabet.get(text[i] + text[i + 1]) is not None:
-                simple_text += cyrillic_alphabet.get(text[i] + text[i + 1])
-                i += 2
-            elif cyrillic_alphabet.get(text[i]) is not None:
-                simple_text += cyrillic_alphabet.get(text[i])
-                i += 1
-            else:
-                i += 1
-        except IndexError:
-            if cyrillic_alphabet.get(text[i]) is not None:
-                simple_text += cyrillic_alphabet.get(text[i])
-                i += 1
-            else:
-                i += 1
+    for multi_latin_string, cyrillic_string in cyrillic_multiple_alphabet.items():
+        text = text.replace(multi_latin_string, cyrillic_string)
 
-    return simple_text
+    for latin_string, cyrillic_string in cyrillic_alphabet.items():
+        text = text.replace(latin_string, cyrillic_string)
+
+    return text

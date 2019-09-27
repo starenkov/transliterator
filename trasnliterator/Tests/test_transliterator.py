@@ -3,14 +3,14 @@ import pytest
 
 def test_latin():
 
-    input_text = 'Что то с чем то'
-    output_text = 'Chto to s chem to'
+    input_text = 'Серқуёш хур ўлкам, элга бахт, нажот! Сен ўзинг дўстларга йўлдош, меҳрибон!'
+    output_text = 'Serquyosh hur o`lkam, elga baht, nazhot! Sen o`zing do`stlarga jo`ldosh, mehribon!'
 
-    assert transliterator.convert_latin(input_text) == output_text
+    assert transliterator.convert_to_latin(input_text) == output_text
 
 def test_cyrillic():
 
-    input_text = 'Kakoy to primer'
-    output_text = 'Какоы то пример'
+    input_text = 'Serquyosh hur oʻlkam, elga baxt, najot! Sen oʻzing doʻstlarga yoʻldosh, mehribon!'
+    output_text = 'Cерқуёш хур оʻлкам, елга баxт, найот! Cен оʻзинг доʻстларга ёʻлдош, мехрибон!'
 
-    assert transliterator.convert_cyrillic(input_text) == output_text
+    assert transliterator.convert_to_cyrillic(input_text) == output_text

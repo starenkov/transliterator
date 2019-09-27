@@ -1,1 +1,1 @@
-from .transliterator import convert_cyrillic, convert_latin
+from .transliterator import convert_to_cyrillic, convert_to_latin
