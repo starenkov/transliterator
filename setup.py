@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='stransliterator',
-    version='0.0.2',
+    version='0.0.3',
     packages=['trasnliterator'],
     url='https://github.com/starenkov/transliterator',
     license='MIT License',
